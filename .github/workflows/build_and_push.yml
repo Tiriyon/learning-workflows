@@ -12,11 +12,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to Docker
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_TOKEN }}
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOEKN }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_TOKEN
 
       - name: Build Docker image
         run: docker build -t tiriyon/demo-workflow-app:${{ github.sha }} .
 
       - name: Push Docker image
         run: docker push tiriyon/demo-workflow-app:${{ github.sha }}
-
