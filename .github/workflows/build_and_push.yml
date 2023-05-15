@@ -20,7 +20,7 @@ jobs:
           docker login -u tiriyon -p ${{ secrets.DOCKER_PASS }}
 
       - name: Build Docker image
-        run: docker build -t tiriyon/demo-workflow-app:${{ github.sha }} .
+        run: docker build -t tiriyon/${{ APP_NAME }}:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push tiriyon/demo-workflow-app:${{ github.sha }}
+        run: docker push tiriyon/${{ APP_NAME }}:${{ github.sha }}
