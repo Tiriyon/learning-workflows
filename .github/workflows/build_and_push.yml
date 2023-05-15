@@ -2,6 +2,13 @@ name: Build Docker Image
 
 on:
   workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+      cluster_name:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -14,7 +21,7 @@ jobs:
       - name: print passthrough vars
         run: |
           echo "app_name: ${{ inputs.app_name }}"
-          echo "cluster: ${{ inputs.cluster }}"
+          echo "cluster: ${{ inputs.cluster_name }}"
 
       - name: Login to Docker
         env:
