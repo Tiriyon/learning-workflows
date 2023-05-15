@@ -24,10 +24,6 @@ jobs:
           echo "cluster: ${{ inputs.cluster_name }}"
 
       - name: Login to Docker
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_TOKEN: ${{ secrets.DOCKER_TOEKN }}
-          DOCKER_PASS: ${{ env.DOCKER_PASS }}
         run: |
           docker login -u tiriyon -p ${{ secrets.DOCKER_PASS }}
 
