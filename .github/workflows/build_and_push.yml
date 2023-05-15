@@ -16,7 +16,7 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOEKN }}
         run: |
-          docker login -u $DOCKER_USER -p $DOCKER_TOKEN
+          docker login -u tiriyon -p ${{ env.DOCKER_PASS }}
 
       - name: Build Docker image
         run: docker build -t tiriyon/demo-workflow-app:${{ github.sha }} .
