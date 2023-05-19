@@ -1,34 +1,52 @@
-name: Build Docker Image
+name: 🚀 ROCKET LAUNCHING
 
 on:
+  workflow_dispatch:
   workflow_call:
-    inputs:
-      app_name:
-        required: true
-        type: string
-      cluster_name:
-        required: true
-        type: string
+#     inputs:
+#       app_name:
+#         required: true
+#         type: string
+#       cluster_name:
+#         required: true
+#         type: string
 
 jobs:
-  build:
+  test_outputs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Out variable
+        id: outenv
+        run: |
+          echo "dir=test1" >> $GITHUB_OUTPUT
+          echo "dir2=test2" >> $GITHUB_OUTPUT
+          
+      - name: Test output of GITHUB_OUTPUT
+        id: inenv 
+#         with:
+#           path: ${{ steps.outenv.outputs.dir }}
+        run: |
+          echo "$GITHUB_OUTPUT"
+
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
         
-      - name: print passthrough vars
-        run: |
-          echo "app_name: ${{ inputs.app_name }}"
-          echo "cluster: ${{ inputs.cluster_name }}"
+#       - name: print passthrough vars
+#         run: |
+#           echo "app_name: ${{ inputs.app_name }}"
+#           echo "cluster: ${{ inputs.cluster_name }}"
 
-      - name: Login to Docker
-        run: |
-          docker login -u tiriyon -p ${{ secrets.DOCKER_PASS }}
+#       - name: Login to Docker
+#         run: |
+#           docker login -u tiriyon -p ${{ secrets.DOCKER_PASS }}
 
-      - name: Build Docker image
-        run: docker build -t tiriyon/${{ inputs.app_name }}:${{ github.sha }} .
+#       - name: Build Docker image
+#         run: docker build -t tiriyon/${{ inputs.app_name }}:${{ github.sha }} .
 
-      - name: Push Docker image
-        run: docker push tiriyon/${{ inputs.app_name }}:${{ github.sha }}
+#       - name: Push Docker image
+#         run: docker push tiriyon/${{ inputs.app_name }}:${{ github.sha }}
