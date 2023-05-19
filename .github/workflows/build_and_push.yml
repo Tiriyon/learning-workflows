@@ -24,8 +24,10 @@ jobs:
           
       - name: Test output of GITHUB_OUTPUT
         id: inenv 
-#         with:
-#           path: ${{ steps.outenv.outputs.GITHUB_OUTPUT }}
+        with:
+          path: ${{ steps.outenv.outputs.${GITHUB_OUTPUT} }}
+          
+      - name: output env
         run: |
           echo "${GITHUB_OUTPUT}"
 
