@@ -25,7 +25,7 @@ jobs:
       - name: Test output of GITHUB_OUTPUT
         id: inenv 
         with:
-          path: ${{ steps.outenv.outputs.${GITHUB_OUTPUT} }}
+          path: ${{ steps.outenv.outputs.GITHUB_OUTPUT }}
           
       - name: output env
         run: |
