@@ -27,7 +27,7 @@ jobs:
 #         with:
 #           path: ${{ steps.outenv.outputs.GITHUB_OUTPUT }}
         run: |
-          echo "$GITHUB_OUTPUT"
+          echo "${GITHUB_OUTPUT}"
 
 #   build:
 #     runs-on: ubuntu-latest
