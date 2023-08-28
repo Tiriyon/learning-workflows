@@ -2,14 +2,14 @@ name: 🚀 ROCKET LAUNCHING
 
 on:
   workflow_dispatch:
-#   workflow_call:
-#     inputs:
-#       app_name:
-#         required: true
-#         type: string
-#       cluster_name:
-#         required: true
-#         type: string
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+      cluster_name:
+        required: true
+        type: string
 jobs:
   job1:
     runs-on: ubuntu-latest
